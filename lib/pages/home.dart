@@ -8,12 +8,14 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
- Map<dynamic, dynamic> data = {};
+  Map<dynamic, dynamic> data = {};
   @override
   Widget build(BuildContext context) {
-    data = data.isNotEmpty ? data : ModalRoute.of(context)!.settings.arguments as Map;
+    data = data.isNotEmpty
+        ? data
+        : ModalRoute.of(context)!.settings.arguments as Map;
     print(ModalRoute.of(context)!.settings.arguments);
-    String bgImage = !data['isDayTime'] ? 'day.jpg' : 'night.png';
+    String bgImage = data['isDayTime'] ? 'day.jpeg' : 'night.png';
     Color? bgColor = data['isDayTime'] ? Colors.blue : Colors.indigo[700];
     return Scaffold(
       backgroundColor: bgColor,
